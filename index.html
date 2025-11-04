@@ -1,28 +1,17 @@
-// Doorstep Delivery - Customer Support Page (React)
-// Notes:
-// - Removed Next.js-specific and heavy deps (next/image, framer-motion, shadcn/ui) to fix
-//   `TypeError: null is not an object (evaluating 'esm_default._')` caused by unresolved imports.
-// - Pure React + Tailwind classes, inline SVG icon, and standard <img>.
-// - Added simple runtime tests (console.assert) for key helpers so behavior is verifiable.
+// Doorstep Delivery - Mobile-Friendly Customer Support Page (React + Tailwind)
+// This version is fully mobile-responsive with improved layout, spacing, and readability.
+// Removed unnecessary heavy dependencies and simplified design for fast mobile loading.
 
 import React from "react";
 
-/** Constants & Helpers */
-export const SUPPORT_NUMBER = "+919693949804"; // change here if needed
-export const SUPPORT_DISPLAY = "+91 96939 49804"; // human-friendly
+const SUPPORT_NUMBER = "+919693949804";
+const SUPPORT_DISPLAY = "+91 96939 49804";
 
-export function getTelHref(number) {
-  // Normalizes input like "+91 96939 49804" => "tel:+919693949804"
-  if (typeof number !== "string") return "tel:";
+function getTelHref(number) {
   const digits = number.replace(/\s|-/g, "");
   return digits.startsWith("tel:") ? digits : `tel:${digits}`;
 }
 
-export function getCurrentYear() {
-  return new Date().getFullYear();
-}
-
-/** UI Components (minimal, framework-agnostic) */
 function PhoneIcon({ className = "w-6 h-6" }) {
   return (
     <svg
@@ -30,106 +19,74 @@ function PhoneIcon({ className = "w-6 h-6" }) {
       viewBox="0 0 24 24"
       fill="currentColor"
       className={className}
-      aria-hidden="true"
     >
       <path d="M2.3 3.8c-.9 1.6-.4 3.6.9 6 1.4 2.6 3.6 5 6.3 7 2.8 2 5.4 3.1 7.7 3.1 1.1 0 2.1-.3 2.9-.8.6-.4 1.1-1 .9-1.8l-.6-2.6c-.2-.8-1-1.2-1.8-1l-3.1.8c-.6.2-1.2 0-1.6-.5l-2-2.3c-.4-.4-.5-1.1-.3-1.6l1-2.6c.2-.8-.1-1.6-.8-1.9L7.8 4c-.7-.3-1.5-.1-2 .5l-1.3 1.6c-.5.6-1.1.5-1.2-.3L2.9 4c-.2-.9-1.1-1-1.6-.2z" />
     </svg>
   );
 }
 
-function SectionHeader() {
-  return (
-    <header className="text-center mb-10">
-      <h1 className="text-4xl font-bold text-blue-800 mb-2">
-        Doorstep Delivery Customer Support
-      </h1>
-      <p className="text-gray-600 text-lg">Fast. Reliable. Always at your service.</p>
-    </header>
-  );
-}
-
-function HeroCard() {
-  return (
-    <div className="shadow-2xl rounded-2xl overflow-hidden bg-white">
-      <div className="relative w-full h-64">
-        <img
-          src="https://images.unsplash.com/photo-1601049676869-702ea24cfd8b"
-          alt="Friendly support representative wearing headset"
-          className="w-full h-full object-cover"
-          loading="eager"
-        />
-      </div>
-
-      <div className="p-8 text-center space-y-6">
-        <h2 className="text-2xl font-semibold text-blue-900">
-          Need Help With Your Delivery?
-        </h2>
-        <p className="text-gray-700">
-          Our dedicated support team is available 24/7 to help with your doorstep delivery
-          queries, order updates, or feedback. Click the button below to instantly connect
-          with our representative.
-        </p>
-
-        {/* Long Call Button */}
-        <a
-          href={getTelHref(SUPPORT_NUMBER)}
-          className="block w-full"
-          aria-label={`Call support ${SUPPORT_DISPLAY}`}
-          data-testid="call-link"
-        >
-          <button
-            type="button"
-            className="w-full bg-green-600 hover:bg-green-700 active:bg-green-800 text-white text-lg px-10 py-6 rounded-full shadow-lg inline-flex items-center justify-center gap-2 focus:outline-none focus:ring-4 focus:ring-green-300"
-            data-testid="call-button"
-          >
-            <PhoneIcon />
-            <span className="font-medium">Call Support: {SUPPORT_DISPLAY}</span>
-          </button>
-        </a>
-
-        {/* Optional secondary actions */}
-        <div className="grid sm:grid-cols-2 gap-3 text-sm">
-          <a
-            href="#track-order"
-            className="border rounded-xl px-4 py-3 bg-white hover:bg-gray-50 text-gray-700"
-          >
-            Track Order
-          </a>
-          <a
-            href="#faq"
-            className="border rounded-xl px-4 py-3 bg-white hover:bg-gray-50 text-gray-700"
-          >
-            FAQs
-          </a>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 export default function SupportPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-blue-100 flex flex-col items-center justify-center p-6">
-      <SectionHeader />
-      <div className="max-w-3xl w-full">
-        <HeroCard />
-      </div>
-      <footer className="mt-10 text-gray-600 text-sm" data-testid="footer">
-        © {getCurrentYear()} Doorstep Delivery — All Rights Reserved.
+    <div className="min-h-screen flex flex-col items-center justify-between bg-gradient-to-b from-blue-50 to-blue-100 text-center font-sans overflow-hidden">
+      {/* Header */}
+      <header className="w-full py-8 px-4">
+        <h1 className="text-3xl sm:text-4xl font-extrabold text-blue-800 mb-2 leading-tight">
+          Doorstep Delivery Support
+        </h1>
+        <p className="text-gray-600 text-base sm:text-lg">
+          Fast. Reliable. Always at your service.
+        </p>
+      </header>
+
+      {/* Hero Section */}
+      <section className="flex flex-col items-center w-full max-w-md bg-white rounded-3xl shadow-xl overflow-hidden mx-4 mb-6">
+        <img
+          src="https://images.unsplash.com/photo-1601049676869-702ea24cfd8b?auto=format&fit=crop&w=800&q=80"
+          alt="Customer Support"
+          className="w-full h-48 object-cover sm:h-56"
+        />
+
+        <div className="p-6 sm:p-8">
+          <h2 className="text-xl sm:text-2xl font-semibold text-blue-900 mb-3">
+            Need Help With Your Delivery?
+          </h2>
+          <p className="text-gray-700 text-sm sm:text-base mb-6 leading-relaxed">
+            Our dedicated support team is available 24/7 to help with your orders, updates, or feedback.
+            Tap below to connect instantly.
+          </p>
+
+          {/* Call Button */}
+          <a href={getTelHref(SUPPORT_NUMBER)} className="block">
+            <button
+              className="w-full bg-green-600 hover:bg-green-700 active:bg-green-800 text-white text-lg sm:text-xl py-5 sm:py-6 rounded-full shadow-lg flex items-center justify-center gap-3 transition-all duration-200"
+            >
+              <PhoneIcon className="w-7 h-7 sm:w-8 sm:h-8" />
+              <span className="font-semibold">Call Support: {SUPPORT_DISPLAY}</span>
+            </button>
+          </a>
+
+          {/* Secondary Links */}
+          <div className="flex flex-col sm:flex-row sm:justify-center gap-3 mt-6">
+            <a
+              href="#track-order"
+              className="border rounded-full px-5 py-3 bg-gray-50 hover:bg-gray-100 text-gray-700 text-sm sm:text-base transition-all"
+            >
+              Track Order
+            </a>
+            <a
+              href="#faq"
+              className="border rounded-full px-5 py-3 bg-gray-50 hover:bg-gray-100 text-gray-700 text-sm sm:text-base transition-all"
+            >
+              FAQs
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="w-full py-4 bg-transparent text-gray-600 text-sm sm:text-base">
+        © {new Date().getFullYear()} Doorstep Delivery — All Rights Reserved.
       </footer>
     </div>
   );
-}
-
-/**
- * Lightweight Runtime Tests (executed in browser devtools)
- * These are non-fatal assertions to help validate behavior quickly.
- */
-try {
-  console.assert(getTelHref(SUPPORT_NUMBER) === "tel:+919693949804", "tel href should match");
-  console.assert(getTelHref(SUPPORT_DISPLAY) === "tel:+919693949804", "display maps to tel href");
-  console.assert(typeof getCurrentYear() === "number" && getCurrentYear() >= 2024, "current year valid");
-} catch (e) {
-  // No-op: assertions shouldn't break the UI; just log.
-  console.warn("Runtime test error:", e);
 }
