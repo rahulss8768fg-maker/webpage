@@ -1,6 +1,5 @@
-// Doorstep Delivery - Mobile-Friendly Customer Support Page (React + Tailwind)
-// This version is fully mobile-responsive with improved layout, spacing, and readability.
-// Removed unnecessary heavy dependencies and simplified design for fast mobile loading.
+// Doorstep Delivery - Professional & Mobile-Friendly Customer Support Page
+// Modern, clean, and responsive React + Tailwind design with premium branding and visuals.
 
 import React from "react";
 
@@ -28,54 +27,54 @@ function PhoneIcon({ className = "w-6 h-6" }) {
 export default function SupportPage() {
   return (
     <div className="min-h-screen flex flex-col items-center justify-between bg-gradient-to-b from-blue-50 to-blue-100 text-center font-sans overflow-hidden">
-      {/* Header */}
-      <header className="w-full py-8 px-4">
-        <h1 className="text-3xl sm:text-4xl font-extrabold text-blue-800 mb-2 leading-tight">
+      {/* Hero Header */}
+      <header className="w-full py-10 px-6 bg-white shadow-md border-b border-blue-100">
+        <h1 className="text-3xl sm:text-5xl font-extrabold text-blue-900 mb-2 leading-tight tracking-tight">
           Doorstep Delivery Support
         </h1>
-        <p className="text-gray-600 text-base sm:text-lg">
-          Fast. Reliable. Always at your service.
+        <p className="text-gray-600 text-lg sm:text-xl max-w-2xl mx-auto">
+          Professional customer service to make your delivery experience seamless and worry-free.
         </p>
       </header>
 
       {/* Hero Section */}
-      <section className="flex flex-col items-center w-full max-w-md bg-white rounded-3xl shadow-xl overflow-hidden mx-4 mb-6">
+      <section className="flex flex-col items-center w-full max-w-2xl bg-white rounded-3xl shadow-2xl overflow-hidden mx-4 mt-10 mb-10">
         <img
-          src="https://images.unsplash.com/photo-1601049676869-702ea24cfd8b?auto=format&fit=crop&w=800&q=80"
-          alt="Customer Support"
-          className="w-full h-48 object-cover sm:h-56"
+          src="https://images.unsplash.com/photo-1601049676869-702ea24cfd8b?auto=format&fit=crop&w=1200&q=80"
+          alt="Customer Support Team"
+          className="w-full h-60 object-cover sm:h-72"
         />
 
-        <div className="p-6 sm:p-8">
-          <h2 className="text-xl sm:text-2xl font-semibold text-blue-900 mb-3">
+        <div className="p-8 sm:p-10">
+          <h2 className="text-2xl sm:text-3xl font-semibold text-blue-800 mb-4">
             Need Help With Your Delivery?
           </h2>
-          <p className="text-gray-700 text-sm sm:text-base mb-6 leading-relaxed">
-            Our dedicated support team is available 24/7 to help with your orders, updates, or feedback.
-            Tap below to connect instantly.
+          <p className="text-gray-700 text-base sm:text-lg mb-8 leading-relaxed">
+            Our dedicated support team is available <strong>24/7</strong> to assist you with your orders,
+            delivery updates, or any other inquiries. Connect instantly with a professional representative.
           </p>
 
           {/* Call Button */}
           <a href={getTelHref(SUPPORT_NUMBER)} className="block">
             <button
-              className="w-full bg-green-600 hover:bg-green-700 active:bg-green-800 text-white text-lg sm:text-xl py-5 sm:py-6 rounded-full shadow-lg flex items-center justify-center gap-3 transition-all duration-200"
+              className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white text-lg sm:text-xl py-5 sm:py-6 rounded-full shadow-lg flex items-center justify-center gap-3 transition-all duration-200 font-semibold tracking-wide"
             >
               <PhoneIcon className="w-7 h-7 sm:w-8 sm:h-8" />
-              <span className="font-semibold">Call Support: {SUPPORT_DISPLAY}</span>
+              Call Support: {SUPPORT_DISPLAY}
             </button>
           </a>
 
-          {/* Secondary Links */}
-          <div className="flex flex-col sm:flex-row sm:justify-center gap-3 mt-6">
+          {/* Secondary Action Buttons */}
+          <div className="flex flex-col sm:flex-row sm:justify-center gap-4 mt-8">
             <a
               href="#track-order"
-              className="border rounded-full px-5 py-3 bg-gray-50 hover:bg-gray-100 text-gray-700 text-sm sm:text-base transition-all"
+              className="border-2 border-blue-600 text-blue-700 hover:bg-blue-600 hover:text-white transition-all rounded-full px-6 py-3 text-base sm:text-lg font-medium shadow-sm"
             >
               Track Order
             </a>
             <a
               href="#faq"
-              className="border rounded-full px-5 py-3 bg-gray-50 hover:bg-gray-100 text-gray-700 text-sm sm:text-base transition-all"
+              className="border-2 border-gray-400 text-gray-700 hover:bg-gray-200 transition-all rounded-full px-6 py-3 text-base sm:text-lg font-medium shadow-sm"
             >
               FAQs
             </a>
@@ -84,8 +83,13 @@ export default function SupportPage() {
       </section>
 
       {/* Footer */}
-      <footer className="w-full py-4 bg-transparent text-gray-600 text-sm sm:text-base">
-        © {new Date().getFullYear()} Doorstep Delivery — All Rights Reserved.
+      <footer className="w-full py-6 bg-white border-t border-blue-100 text-gray-700 text-sm sm:text-base shadow-inner">
+        <p>
+          © {new Date().getFullYear()} <strong>Doorstep Delivery</strong> — Your Trusted Delivery Partner.
+        </p>
+        <p className="text-xs sm:text-sm text-gray-500 mt-1">
+          Designed for excellence • Built for mobile • Powered by reliability
+        </p>
       </footer>
     </div>
   );
